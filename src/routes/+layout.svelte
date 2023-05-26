@@ -1,47 +1,52 @@
 <script lang="ts">
-/* 	import type { LayoutData } from './$types';
-	export let data: LayoutData; */
+		import type { LayoutData } from './$types';
+	export let data: LayoutData;
+
 	import '@skeletonlabs/skeleton/themes/theme-rocket.css';
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
 	import '../app.postcss';
-
-	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	
+	import { AppBar, AppShell, Avatar, LightSwitch } from '@skeletonlabs/skeleton';
 	import NavBar from '$lib/components/NavBar.svelte';
+	import { goto } from '$app/navigation';
+
+function redir() {
+	if(data.val===1){
+		goto('/login')
+	}
+	if(data.val===2){
+		goto('/register')
+	}
+	
+}
 
 </script>
 
-
-<div class="md:container mx-auto px-auto pt-10">
-
-	<AppShell>
-		<svelte:fragment slot="header">
-			<AppBar>
-				<svelte:fragment slot="lead">
-					<i >🐱‍🏍 DNS Соревнование</i>
-				</svelte:fragment>
-				<nav>
-					<ul class="flex justify-center font-bold">
-						<li><a href="/" class="block py-2 pl-3 pr-4 rounded">Home</a></li>
-						<li><a href="/" class="block py-2 pl-3 pr-4 rounded">About</a></li>
-						<li><a href="/" class="block py-2 pl-3 pr-4 rounded">Services</a></li>
-						<li><a href="/login" class="block py-2 pl-3 pr-4 rounded">Login</a></li>
-						<li><a href="/register" class="block py-2 pl-3 pr-4 rounded">Register</a></li>
-					</ul>
-				</nav>
-				<svelte:fragment slot="trail">
-					<LightSwitch />
-				</svelte:fragment>
-			</AppBar>
-		</svelte:fragment>
-		<!-- (sidebarLeft) -->
-		<!-- (sidebarRight) -->
-		<!-- (pageHeader) -->
-		<!-- Router Slot -->
-		<slot />
-		<!-- ---- / ---- -->
-		<!-- (pageFooter) -->
-		<!-- (footer) -->
-	</AppShell>
-</div>
-
-
+<AppShell>
+	<svelte:fragment slot="header">
+		<AppBar class="shadow-xl">
+			<svelte:fragment slot="lead">
+				<a href="/" class="text-xl uppercase font-bold">🚴 SPORT</a>
+			</svelte:fragment>
+			<div class="flex gap-5 justify-center">
+				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/">Home</a>
+				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/test">Test</a>
+<!-- 				{#if data.val == 1}
+				
+				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/register">Register</a>
+				{:else}
+				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/login">Login</a>
+				{/if} -->
+			</div>
+			<svelte:fragment slot="trail">
+				<Avatar initials="ДС" 
+				background="border-4 border-surface-300-600-token hover:!border-primary-500" 
+				cursor="cursor-pointer"
+				on:click={redir}
+				/>
+				<LightSwitch />
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+	<slot />
+</AppShell>
