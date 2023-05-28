@@ -2,7 +2,90 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	type Profile = {
+		name: String;
+		surname: String;
+		email: String;
+		role: String;
+		division: String;
+		firm: String;
+		about: String;
+		img: String;
+	};
 </script>
+
+<div class="pb-8 md:pb-0.5">
+	<div class="py-10 p-0 mx-auto max-w-5xl">
+		<header class="text-center py-4">
+			<div class="text-center mb-2 text-3xl font-bold">Добро пожаловать!</div>
+			<p class="unstyled text-sm md:text-base opacity-50">
+				Еще нет аккаунта? <a href="/register" class="">Зарегистрироваться</a>
+			</p>
+		</header>
+		<div class="card p-6 space-y-6 shadow-xl text-left">
+			<form class="space-y-4">
+				<label class="label">
+					<span>Почта</span>
+					<input type="email" placeholder="адрес@почты.рф" class="input" />
+				</label>
+				<label class="label">
+					<span>Пароль</span>
+					<input type="password" placeholder="Ваш пароль" class="input" />
+				</label>
+				<label class="inline-flex items-center">
+					<input type="checkbox" class="checkbox" />
+					<span class="ml-2">Запомнить меня</span>
+				</label>
+				<button class="btn variant-filled-primary w-full">Сбросить пароль</button>
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+					<label class="label">
+						<span>Input (text)</span>
+						<input class="input variant-form-material" type="text" placeholder="input text" />
+					</label>
+					<label class="label">
+						<span>Input (password)</span>
+						<input
+							class="input variant-form-material"
+							type="password"
+							placeholder="Enter password..."
+						/>
+					</label>
+					<label class="label">
+						<span>Select</span>
+						<select class="select variant-form-material">
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+							<option value="3">Option 3</option>
+							<option value="4">Option 4</option>
+							<option value="5">Option 5</option>
+						</select>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+	<label class="label">
+		<span>Input (text)</span>
+		<input class="input variant-form-material" type="text" placeholder="input text" />
+	</label>
+	<label class="label">
+		<span>Input (password)</span>
+		<input class="input variant-form-material" type="password" placeholder="Enter password..." />
+	</label>
+	<label class="label">
+		<span>Select</span>
+		<select class="select variant-form-material">
+			<option value="1">Option 1</option>
+			<option value="2">Option 2</option>
+			<option value="3">Option 3</option>
+			<option value="4">Option 4</option>
+			<option value="5">Option 5</option>
+		</select>
+	</label>
+</div>
 
 <div class="pb-8 md:pb-0.5">
 	<div class="py-10 p-0 mx-auto max-w-md">

@@ -1,5 +1,6 @@
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-    return {};
+    const form = ""
+    return {form};
 }) satisfies PageServerLoad;
