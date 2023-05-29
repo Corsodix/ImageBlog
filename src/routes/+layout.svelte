@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { lucia } from 'lucia-auth';
 	import type { LayoutData } from './$types';
 	export let data: LayoutData;
 
@@ -12,6 +13,8 @@
 	import { redirect } from '@sveltejs/kit';
 
 	let initials = 'Login';
+
+	const { user } = data
 
 	if (data.user !== null) {
 		initials = data.user.name.at(0).toUpperCase() + data.user.surname.at(0).toUpperCase();
