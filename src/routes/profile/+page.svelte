@@ -1,17 +1,23 @@
 <script lang="ts">
-    import Auth from '$lib/components/forms/auth.svelte';
-import type { PageData } from './$types';
-    
-    export let data: PageData;
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+    let {user}= data.user
+
 
 
 </script>
 
-
-<Auth data={data.form} />
-
-{#if data.val === 1}
-     <!-- content here -->
+{#if user}
+	<div class="card p-10 m-auto max-w-sm mt-10">
+		<h4>{user.name}</h4>
+		<h4>{user.surname}</h4>
+		<h4>{user.division}</h4>
+		<h4>{user.email}</h4>
+        <input type="text"
+        class="input" class:input-error={true}>
+	</div>
 {:else}
-     <!-- else content here -->
+	<h1>NO USER</h1>
 {/if}
