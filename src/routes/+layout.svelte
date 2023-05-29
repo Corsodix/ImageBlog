@@ -12,7 +12,11 @@
 
 	let initials = 'Login'
 
-function login() {
+	if(data.user !== null) {
+		initials = data.user.name.at(0).toUpperCase() + data.user.surname.at(0).toUpperCase()
+	}
+
+/* function login() {
 	initials = 'ДС'
 }
 
@@ -24,7 +28,7 @@ function redir() {
 		goto('/register')
 	}
 	
-}
+} */
 
 </script>
 
@@ -45,13 +49,16 @@ function redir() {
 				{/if} -->
 			</div>
 			<svelte:fragment slot="trail">
-				{#if initials === 'Login'}
-					<a on:click={login} class="btn variant-ghost-surface rounded-2xl font-bold" href="/login">Войти</a>
+				{#if !data.user}
+					<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/login">Войти</a>
 				{:else}
+					<form method="POST">
+						<button class="btn variant-ghost-surface rounded-2xl font-bold" type="submit" formaction="/logout">Выйти</button>
+					</form>
 					 <Avatar {initials}
 					 background="border-4 border-surface-300-600-token hover:!border-primary-500" 
 					 cursor="cursor-pointer"
-					 on:click={redir}
+					 
 					 />
 				{/if}
 				<LightSwitch />
