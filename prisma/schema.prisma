@@ -29,7 +29,7 @@ model AuthUser {
   name         String
   surname      String
   email        String        @unique
-  role         String
+  role         Role        @default(USER)
   division     String
   firm         String
   about        String
@@ -62,4 +62,9 @@ model AuthKey {
 
   @@index([user_id])
   @@map("auth_key")
+}
+
+enum Role {
+  USER
+  ADMIN
 }

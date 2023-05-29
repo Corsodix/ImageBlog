@@ -10,6 +10,12 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import { goto } from '$app/navigation';
 
+	let initials = 'Login'
+
+function login() {
+	initials = 'ДС'
+}
+
 function redir() {
 	if(data.val===1){
 		goto('/login')
@@ -39,11 +45,15 @@ function redir() {
 				{/if} -->
 			</div>
 			<svelte:fragment slot="trail">
-				<Avatar initials="ДС" 
-				background="border-4 border-surface-300-600-token hover:!border-primary-500" 
-				cursor="cursor-pointer"
-				on:click={redir}
-				/>
+				{#if initials === 'Login'}
+					<a on:click={login} class="btn variant-ghost-surface rounded-2xl font-bold" href="/login">Войти</a>
+				{:else}
+					 <Avatar {initials}
+					 background="border-4 border-surface-300-600-token hover:!border-primary-500" 
+					 cursor="cursor-pointer"
+					 on:click={redir}
+					 />
+				{/if}
 				<LightSwitch />
 			</svelte:fragment>
 		</AppBar>
