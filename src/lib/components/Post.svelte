@@ -20,14 +20,14 @@
 	});
 </script>
 
-<div class="w-30 card card-hover overflow-hidden bg-initial rounded-3xl relative">
+<div class="w-30 h-96 card card-hover overflow-hidden bg-initial rounded-3xl relative">
 	<!-- 	{#if checked} -->
 	<img {src} alt="IMG-0613" />
 	<!-- 	{:else}
 		<img src={midHorizontal} alt="IMG-0613" />
 	{/if} -->
 
-	<div class="text-block">
+	<div class="text-block m-5">
 		<h6 class="h6">Announcements</h6>
 		<h3 class="h3" data-toc-ignore>Skeleton is Awesome!</h3>
 		<article>
@@ -52,13 +52,18 @@
 <style>
 	.text-block {
 		position: absolute;
-		top: 40px;
-		left: 40px;
+		top: 10px;
+		left: 10px;
 		/* 		bottom: 20px;
         right: 20px; */
-		background-color: rgba(0, 0, 0, 0.658);
-		color: rgba(255, 255, 255, 0.678);
+		background-color: rgba(0, 0, 0, 0.411);
+		color: rgba(255, 255, 255, 0.781);
 		padding-left: 20px;
 		padding-right: 20px;
+	}
+	img {
+		height: inherit;
+		width: inherit;
+		object-fit: contain;
 	}
 </style>

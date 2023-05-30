@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { lucia } from 'lucia-auth';
+	/* import { lucia } from 'lucia-auth'; */
 	import type { LayoutData } from './$types';
 	export let data: LayoutData;
 
@@ -49,6 +49,8 @@ function redir() {
 			<div class="flex gap-5 justify-center">
 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/">Home</a>
 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/test">Test</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/cats">Cats</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/twcats">TWCats</a>
 				<!-- 				{#if data.val == 1}
 				
 				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/register">Register</a>
