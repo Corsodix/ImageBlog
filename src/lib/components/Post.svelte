@@ -17,6 +17,8 @@
 	onMount(async () => {
 		const img = await getMeta(midHorizontal) ;
 		console.dir(img.naturalHeight + ' ' + img.naturalWidth, img.naturalHeight > img.naturalWidth);
+		const img2 = await getMeta(midVertical) ;
+		console.dir(img2.naturalHeight + ' ' + img2.naturalWidth, img2.naturalHeight > img2.naturalWidth);
 	});
 </script>
 
@@ -48,6 +50,7 @@
 		</div>
 	</footer>
 </div>
+
 
 <style>
 	.text-block {

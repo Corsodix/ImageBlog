@@ -49,8 +49,11 @@ function redir() {
 			<div class="flex gap-5 justify-center">
 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/">Home</a>
 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/test">Test</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/create">Create</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/imgbb">ImgBB</a>
 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/cats">Cats</a>
 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/twcats">TWCats</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/twcats2">TWCats2</a>
 				<!-- 				{#if data.val == 1}
 				
 				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/register">Register</a>
