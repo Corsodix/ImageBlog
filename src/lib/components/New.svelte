@@ -2,6 +2,13 @@
 	import type { PostData } from '$lib/types';
 	import type { Post } from '@prisma/client';
 
+	import type { Prisma } from '@prisma/client';
+
+
+	let x: Prisma.AuthUserInclude
+	let y: Prisma.AuthUser$PostArgs
+
+	let z: Prisma.PostSelect
 
 	const midVertical = 'https://i.ibb.co/rdVfdmh/IMG-0613.png';
 	const midHorizontal = 'https://i.ibb.co/t3ng4j0/alfa.png';
@@ -9,9 +16,9 @@
 	// props
 	/* 	export let src: string; //= midHorizontal;
 	export let ratio: number; // = 1; */
-	export let postData: Post
+	//export let postData: Prisma.PostSelect
 
-/* 	export let postData: Post = {
+	export let postData: Prisma.PostSelect = {
 		id: 1,
 		published: true,
 		userId: 'Имя Участника',
@@ -26,7 +33,7 @@
 		img_width: 1125,
 		img_ratio: 0.46182266009,
 		createdAt: new Date(),
-	}; */
+	}; 
 
 	let alt = 'alt';
 
