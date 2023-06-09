@@ -10,27 +10,54 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//  img_url    String
+//  img_medium String
+//  img_thumb  String
+//  img_title  String
+//  img_width  Int
+//  img_height Int
+//  img_ratio  Float
+//  videoUrl   String?  
+
 model Post {
-  id         Int      @id @default(autoincrement())
-  text       String?
-  published  Boolean  @default(true)
-  sport      String
-  value      Float
-  favorite   Boolean
-  img_url    String
-  img_medium String
-  img_thumb  String
-  img_title  String
-  img_width  Int
-  img_height Int
-  img_ratio  Float
-  videoUrl   String?
-  createdAt  DateTime @default(now())
+  id        Int     @id @default(autoincrement())
+  text      String?
+  published Boolean @default(true)
+  sport     String
+  value     Float
+  favorite  Boolean @default(true)
+
+  createdAt DateTime @default(now()) 
+  tags      Tags[]
+  media     Media?
+
+  checked Boolean @default(false)
 
   auth_user AuthUser @relation(fields: [userId], references: [id])
   userId    String
 
   @@map("post")
+}
+
+model Media {
+  id        Int       @id @default(autoincrement())
+  type      MediaType @default(IMAGE)
+  name      String
+  url       String
+  medium    String?
+  thumb     String?
+  ratio     Float?
+  createdAt DateTime  @default(now())
+
+  post   Post @relation(fields: [postId], references: [id])
+  postId Int  @unique
+}
+
+model Tags {
+  id     Int    @id @default(autoincrement())
+  name   String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId Int
 }
 
 model AuthUser {
@@ -78,4 +105,9 @@ model AuthKey {
 enum Role {
   USER
   ADMIN
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
 }
