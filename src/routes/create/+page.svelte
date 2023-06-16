@@ -10,9 +10,10 @@
 	//const { form, errors, constraints, enhance } = superForm(data)
 	import { superForm } from 'sveltekit-superforms/client';
 
-	import { InputChip } from '@skeletonlabs/skeleton';
+	import { FileButton, InputChip } from '@skeletonlabs/skeleton';
 
 	import type { ActionData } from './$types';
+	import { imageFileToString } from '$lib/utils';
 	export let form: ActionData;
 
 	let categories = ['Ходьба', 'Бег', 'Плавание', 'Приседание', 'Жим', 'Велсипед'];
@@ -29,9 +30,16 @@
 		}
 	};
 
-	let value: Number = 0;
+	let value: Number;
 
-	let tags: string[] = [];
+	let tags: string[] = ['Дивизион', 'Категория'];
+
+	let files: FileList;
+	let imageSrc: string;
+	const handleChange = async () => {
+		let file: File = files[0];
+		imageFileToString(file).then((r) => (imageSrc = r));
+	};
 </script>
 
 <!-- 
@@ -77,9 +85,9 @@
 	<form method="post">
 		<h1>Поделитесь своими достижениями!</h1>
 		<label class="label" for="category">Выберите спорт и заполниете измерения</label>
-		<div class="input-group input-group-divider grid-cols-[1fr_60px_50px]">
+		<div class="input-group grid-cols-[1fr_60px_50px]">
 			<select id="category" bind:value={selectedCategory} on:change={handleOptions}>
-				<option value="0" disabled>Выберите категорию</option>
+				<option value="0" disabled>Категория</option>
 				{#each categories as category}
 					<option value={category}>{category}</option>
 				{/each}
@@ -88,8 +96,19 @@
 			<div>{unit}</div>
 		</div>
 		<label class="label" for="image">Добавьте скриншот своего достижения</label>
-		<input id="image" class="input" title="lakjsdfas" type="file" />
+		<!-- <input id="image" class="input" title="lakjsdfas" type="file" /> -->
+		<div class="flex justify-center">
 
+			<FileButton
+			name="files"
+			button="variant-soft-primary"
+			on:change={handleChange}
+			bind:files
+			accept=".jpg, .jpeg, .png"
+			>
+			Выбрать фото</FileButton
+			>
+		</div>
 		<label class="label" for="video"
 			>Вы можете выложить видео на ютуб и добавить ссылку на видео здесь</label
 		>

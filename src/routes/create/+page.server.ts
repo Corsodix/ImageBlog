@@ -2,8 +2,10 @@ import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
 
+
 export const load = (async ({locals}) => {
     const {user} = await locals.auth.validateUser()
+	
 	return {
 		posts: await prisma.post.findMany(),
         user

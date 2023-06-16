@@ -45,3 +45,39 @@
 </div>
 
 
+<!-- 			<svelte:fragment slot="lead">
+				<a href="/" class="text-xl uppercase font-bold">🚴 SPORT</a>
+			</svelte:fragment> -->
+			<div class="grid grid-col-4 gap-5 justify-center">
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/">На Главную</a>
+				<!-- <a class="btn variant-ghost-surface rounded-2xl font-bold" href="/test">Test</a> -->
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/create">Create</a>
+<!-- 				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/imgbb">ImgBB</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/cats">Cats</a>
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/twcats">TWCats</a> -->
+				<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/twcats2">TWCats2</a>
+				<!-- 				{#if data.val == 1}
+				
+				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/register">Register</a>
+				{:else}
+				<a class="btn  variant-ghost-surface rounded-2xl font-bold" href="/login">Login</a>
+				{/if} -->
+			</div>
+			<svelte:fragment slot="trail">
+				{#if !data.user}
+					<a class="btn variant-ghost-surface rounded-2xl font-bold" href="/login">Войти</a>
+				{:else}
+					<form method="POST">
+						<button
+							class="btn variant-ghost-surface rounded-2xl font-bold"
+							type="submit"
+							formaction="/logout">Выйти</button
+						>
+					</form>
+					<Avatar
+						{initials}
+						background="border-4 border-surface-300-600-token hover:!border-primary-500"
+						cursor="cursor-pointer"
+						on:click={redir}
+					/>
+				{/if}

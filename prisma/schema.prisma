@@ -67,6 +67,7 @@ model AuthUser {
   name         String
   surname      String
   email        String        @unique
+  email_verified Boolean
   role         Role          @default(USER)
   division     String
   firm         String
