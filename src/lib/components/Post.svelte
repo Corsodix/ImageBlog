@@ -8,17 +8,20 @@
 
 	const getMeta = (url: string) =>
 		new Promise((resolve, reject) => {
-			const img = new Image();
+			const img: HTMLImageElement = new Image();
 			img.onload = () => resolve(img);
 			img.onerror = (err) => reject(err);
 			img.src = url;
 		});
-        // image size from url
+	// image size from url
 	onMount(async () => {
-		const img = await getMeta(midHorizontal) ;
+		const img = (await getMeta(midHorizontal)) as HTMLImageElement;
 		console.dir(img.naturalHeight + ' ' + img.naturalWidth, img.naturalHeight > img.naturalWidth);
-		const img2 = await getMeta(midVertical) ;
-		console.dir(img2.naturalHeight + ' ' + img2.naturalWidth, img2.naturalHeight > img2.naturalWidth);
+		const img2 = (await getMeta(midVertical)) as HTMLImageElement;
+		console.dir(
+			img2.naturalHeight + ' ' + img2.naturalWidth,
+			img2.naturalHeight > img2.naturalWidth
+		);
 	});
 </script>
 
@@ -50,7 +53,6 @@
 		</div>
 	</footer>
 </div>
-
 
 <style>
 	.text-block {
