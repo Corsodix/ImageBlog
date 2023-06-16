@@ -15,8 +15,7 @@
 		<h4>{user.surname}</h4>
 		<h4>{user.division}</h4>
 		<h4>{user.email}</h4>
-        <input type="text"
-        class="input" class:input-error={true}>
+        <input type="text" class="input" class:input-error={true}>
 	</div>
 {:else}
 	<h1>NO USER</h1>
