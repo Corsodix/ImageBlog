@@ -28,6 +28,7 @@ export const load = async () => {
 export const actions: Actions = {
     default: async (event) => {
         const form = await superValidate(event, authSchema)
+        upload
         if (!form.valid) {
             return fail(400, { form })
         }

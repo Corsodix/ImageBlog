@@ -1,11 +1,11 @@
 <script lang="ts">
-	//import { API_KEY, UPLOAD_URL } from "$env/static/private";
+	import { API_KEY } from "$env/static/private";
     import { imageFileToBinaryString, imageFileToString } from "$lib/utils";
     import { FileButton } from "@skeletonlabs/skeleton";
   
-    const API_KEY = "07d73a8043765c0fddeca34e573dc18a";
+/*     const API_KEY = "07d73a8043765c0fddeca34e573dc18a";
 
-    const UPLOAD_URL = "https://api.imgbb.com/1/upload";
+    const UPLOAD_URL = "https://api.imgbb.com/1/upload"; */
   
     /* interface FormData {
       name?: string;
@@ -30,7 +30,7 @@
       const formData = new FormData();
       formData.append("image", image);
       const resp = await (
-        await fetch(`${UPLOAD_URL}?key=${API_KEY}`, {
+        await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}&name=${name}`, {
           method: "POST",
           body: formData,
         })

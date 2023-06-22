@@ -1,3 +1,6 @@
+import type { Prisma } from "@prisma/client";
+
+
 export function srcToFile(src: string, fileName: string, mimeType: string) {
     return fetch(src)
         .then(function (res) {
@@ -66,3 +69,31 @@ export const resizeImage = (src: string, width: number): Promise<string> => {
         };
     })
 }
+
+
+
+export   async function upload(
+    apiKey: string,
+    image: string,
+    name: string
+  ): Promise<Prisma.MediaCreateInput> {
+    const formData = new FormData();
+    formData.append("image", image);
+    const resp = await (
+      await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}&name=${name}`, {
+        method: "POST",
+        body: formData,
+      })
+    ).json();
+    if (!resp.success)
+      throw `api upload fail: ${resp.status_code}: ${resp.error.message}`;
+  const uimg: Prisma.MediaCreateInput = {
+        type: "IMAGE",
+      name: resp.data.image.filename,
+      url: resp.data.url,
+      medium: resp.data.medium.url,
+      thumb: resp.data.thumb.url,
+      ratio: resp.data.height / resp.data.width
+  }
+    return uimg;
+  }

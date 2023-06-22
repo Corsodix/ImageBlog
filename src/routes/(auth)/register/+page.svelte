@@ -1,6 +1,16 @@
 <script lang="ts">
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 
+	import {Avatar} from '@skeletonlabs/skeleton';
+
+	import type { PageData } from './$types';
+	import { superForm } from 'sveltekit-superforms/client';
+	import { FileButton } from '@skeletonlabs/skeleton';
+	import { imageFileToString } from '$lib/utils';
+
+	export let data: PageData;
+	const { form, errors, constraints, enhance } = superForm(data.form);
+
 	const divisions = [
 		'01. див. Дальний Восток',
 		'02. див. Восточная Сибирь',
@@ -20,20 +30,18 @@
 	let imageSrc: string;
 	const handleChange = async () => {
 		let file: File = files[0];
-		imageFileToString(file).then((r) => (imageSrc = r));
+		imageFileToString(file).then((r) => {
+			imageSrc = r
+			$form.img = r.split('base64,')[1]
+			console.log($form.img)
+	});
+		//$form.img = imageSrc.split('base64,')[1]
+		console.log($form.email)
 	};
 
-	import type { PageData } from './$types';
-	import { superForm } from 'sveltekit-superforms/client';
-	import { FileButton } from '@skeletonlabs/skeleton';
-	import { imageFileToString } from '$lib/utils';
-
-	export let data: PageData;
 
 	// Client API:
-	const { form, errors, constraints, enhance } = superForm(data.form);
 </script>
-
 <SuperDebug data={$form} />
 
 <div class="p-0 mx-auto sm:max-w-xl md:max-w-2xl">
@@ -128,7 +136,11 @@
 							<h2>Предпросмотр</h2>
 						</div>
 						<div>
-							<img src={imageSrc} alt="test" width="300" height="234" class="my-3" />
+							<Avatar 
+							src={imageSrc}
+							width='w-32'
+							background="border-4 border-surface-300-600-token hover:!border-primary-500"
+						/>
 						</div>
 					{/if}
 					<div>

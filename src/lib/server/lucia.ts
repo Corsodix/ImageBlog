@@ -4,7 +4,7 @@ import { sveltekit } from "lucia-auth/middleware";
 import prisma from "@lucia-auth/adapter-prisma";
 import { PrismaClient } from "@prisma/client";
 import { dev } from "$app/environment";
-import { idToken } from "@lucia-auth/tokens";
+//import { idToken } from "@lucia-auth/tokens";
 
 
 
@@ -20,12 +20,12 @@ export const auth = lucia({
 	}
 });
 
-export const emailVerificationToken = idToken(auth, "email_verification", {
-	expiresIn: 60 * 60 // 1 hour
-});
 
 export type Auth = typeof auth;
 
+/* export const emailVerificationToken = idToken(auth, "email_verification", {
+	expiresIn: 60 * 60 // 1 hour
+}); */
 
 /* const sendEmail = async (emailAddress: string, subject: string, content: string) => {
 	// framework for sending emails
